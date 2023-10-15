@@ -8,7 +8,7 @@ import Saved from './screens/Saved';
 import Search from './screens/Search';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons"; 
-import { ScreenStackHeaderLeftView } from 'react-native-screens';
+import { ScreenStackHeaderLeftView, ScreenStackHeaderSearchBarView } from 'react-native-screens';
 import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
@@ -65,6 +65,22 @@ function SavedStackStackScreen() {
         headerTitle: 'Saved',
       }}/>
     </SavedStack.Navigator>
+  );
+};
+
+const SearchStack = createNativeStackNavigator();
+function SearchStackScreen() {
+  return(
+    <SearchStack.Navigator>
+      <SearchStack.Screen name='Search' component={Search} options={{
+        headerTitleAlign: 'center',
+        headerTitle: 'Saved',
+        headerShown: false,
+        headerTransparent: false,
+        headerSearchBarOptions
+        
+      }}/>
+    </SearchStack.Navigator>
   );
 };
 
