@@ -4,13 +4,13 @@ import { FlatList } from 'react-native-gesture-handler';
 
  const Render = ({item}) => {
   return(
-    <View>
+    <View style={styles.subContainer}>
       <ImageBackground source={item.uri1}>
         <Image source={item.uri}/>
       </ImageBackground>
       <Text style={styles.address}> {item.address} </Text>
       <Text style={styles.city}> {item.city} </Text>
-      <Image source={item.uri2}/>
+      <Image source={item.uri2} style={styles.star}/>
     </View>
   );
  }
@@ -18,12 +18,11 @@ import { FlatList } from 'react-native-gesture-handler';
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.container2}>
         <FlatList
         data={slide}
         renderItem={({item, slide}) => <Render item={item}/>}
         />
-
         <FlatList
         data={slide2}
         renderItem={({item, slide2}) => <Render item={item}/>}
@@ -37,10 +36,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '100%',
   },
-  
+  container2: {
+    flexDirection: 'row',
+    marginTop: 20,
+    width: '98%',
+  },
+  subContainer: {
+    marginHorizontal: 12,
+    marginVertical: 16,
+  },  
+  address: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginVertical: 8,
+  },
+  city: {
+    fontSize: 13,
+    fontWeight: '400',
+    marginBottom: 8,
+  },
+  start: {
+
+  },
 });
 const slide = [
   {
