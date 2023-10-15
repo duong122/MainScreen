@@ -13,8 +13,6 @@ import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-h
 
 const Tab = createBottomTabNavigator();
 
-const HomeStack = createNativeStackNavigator();
-
 const ImageLeft = () => {
   return (
     <TouchableOpacity>
@@ -32,6 +30,8 @@ const RightIcon = () => {
   );
 }
 
+const HomeStack = createNativeStackNavigator();
+
 function HomeStackScreen() {
   return(
     <HomeStack.Navigator>
@@ -42,6 +42,18 @@ function HomeStackScreen() {
         headerRight: () => <RightIcon/>
       }}/>
     </HomeStack.Navigator>
+  );
+}
+
+const CategoriesStack = createNativeStackNavigator();
+function CategoriesStackScreen() {
+  return(
+    <CategoriesStack.Navigator>
+      <CategoriesStack.Screen name='Categories' component={Categories} options={{
+        headerTitleAlign: 'center',
+        headerTitle: 'Categories',
+      }}/>
+    </CategoriesStack.Navigator>
   );
 }
 
@@ -66,8 +78,9 @@ export default function App() {
           
         }}></Tab.Screen>
 
-      <Tab.Screen name='Categories' component={Categories} options={{
-          tabBarLabel: 'Categories',      
+      <Tab.Screen name='Categories' component={CategoriesStackScreen} options={{
+        headerShown: false,
+          tabBarLabel: 'Categories',       
           tabBarIcon: (() => {
             return(
               <Ionicons
@@ -81,6 +94,7 @@ export default function App() {
         }}></Tab.Screen>
 
         <Tab.Screen name='Saved' component={Saved} options={{
+          headerShown: false,
           tabBarLabel: 'Saved',      
           tabBarIcon: (() => {
             return (
@@ -94,6 +108,7 @@ export default function App() {
         }}></Tab.Screen>
         
         <Tab.Screen name='Search' component={Search} options={{
+          headerShown: false,
           tabBarLabel: 'Search',    
           tabBarIcon: (() => {
             return (
