@@ -26,8 +26,8 @@ const ImageLeft = () => {
 const RightIcon = () => {
   return (
     <View style={styles.IconHeaderContainer}>
-      <Image source={require('./assets/img/addNewBtn.png')}/>
-      <Image source={require('./assets/img')}/>
+      <Image source={require('./assets/img/addNewBtn.png')} style={styles.addNewBtn}/>
+      <Image source={require('./assets/img/MapBtn.png')} style={styles.mapBtn}/>
     </View>
   );
 }
@@ -38,7 +38,8 @@ function HomeStackScreen() {
       <HomeStack.Screen name='Home_1' component={Home_1} options={{
         headerTitleAlign: 'center',
         headerTitle: 'Home',
-        headerLeft: () => <ImageLeft/>
+        headerLeft: () => <ImageLeft/>,
+        headerRight: () => <RightIcon/>
       }}/>
     </HomeStack.Navigator>
   );
@@ -117,4 +118,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  IconHeaderContainer: {
+    flexDirection: 'row',
+  },
+  addNewBtn: {
+    marginRight: 20,
+  }
 });
