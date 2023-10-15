@@ -19,7 +19,7 @@ const ImageLeft = () => {
       <Image source={require('./assets/img/fezbot2000-365718-unsplash.png')} style={{borderRadius: 25,}}/>
     </TouchableOpacity>
   );
-}
+};
 
 const RightIcon = () => {
   return (
@@ -28,10 +28,9 @@ const RightIcon = () => {
       <Image source={require('./assets/img/MapBtn.png')} style={styles.mapBtn}/>
     </View>
   );
-}
+};
 
 const HomeStack = createNativeStackNavigator();
-
 function HomeStackScreen() {
   return(
     <HomeStack.Navigator>
@@ -43,7 +42,7 @@ function HomeStackScreen() {
       }}/>
     </HomeStack.Navigator>
   );
-}
+};
 
 const CategoriesStack = createNativeStackNavigator();
 function CategoriesStackScreen() {
@@ -55,7 +54,19 @@ function CategoriesStackScreen() {
       }}/>
     </CategoriesStack.Navigator>
   );
-}
+};
+
+const SavedStack = createNativeStackNavigator();
+function SavedStackStackScreen() {
+  return(
+    <SavedStack.Navigator>
+      <SavedStack.Screen name='Saved' component={Saved} options={{
+        headerTitleAlign: 'center',
+        headerTitle: 'Saved',
+      }}/>
+    </SavedStack.Navigator>
+  );
+};
 
 export default function App() {
   return (
@@ -93,7 +104,7 @@ export default function App() {
           })  
         }}></Tab.Screen>
 
-        <Tab.Screen name='Saved' component={Saved} options={{
+        <Tab.Screen name='Saved' component={SavedStackStackScreen} options={{
           headerShown: false,
           tabBarLabel: 'Saved',      
           tabBarIcon: (() => {
