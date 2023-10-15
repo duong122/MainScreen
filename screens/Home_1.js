@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
 const Render = ({ item }) => {
   return(
@@ -23,6 +23,7 @@ const Renderhouses = ({ item }) => {
 
 export default function App() {
   return (
+    <ScrollView>
     <View style={styles.container} >
       <View style={styles.categori}>
         <Text style={styles.title}> Categories </Text>
@@ -56,6 +57,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
@@ -64,12 +66,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     width: '100%',
-    height: 1000
   },
   categori: {
     width: '100%',
-    height: '163',
-  
+    height: '163', 
   },
   title: {
     fontSize: 26, 
@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 20,
     width: '100%',
-    height: 500,
   },
   imgHouses: {    
   },
@@ -119,15 +118,13 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
     color: '#4A4A4A',
-    
   },
   btnShowAll: {
-    width: '98%',
+    width: '90%',
     height: 45,
     borderWidth: 1,
     borderColor: '#20C065',
     borderRadius: 10,
-    position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -139,7 +136,7 @@ const styles = StyleSheet.create({
   containButton: {
     width: '100%',
     alignItems: 'center',
- 
+    marginVertical: 20,
   }
 });
 
