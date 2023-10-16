@@ -26,7 +26,7 @@ const RightIcon = ({ navigation }) => {
   return (
     <View style={styles.IconHeaderContainer}>
       <Image source={require('./assets/img/addNewBtn.png')} style={styles.addNewBtn}/>
-      <TouchableOpacity onPress={navigation.navigate('Map')}>
+      <TouchableOpacity >
          <Image source={require('./assets/img/MapBtn.png')} style={styles.mapBtn}/>
       </TouchableOpacity>
     </View>
@@ -176,6 +176,22 @@ export default function App() {
             );
           })    
         }}></Tab.Screen>
+
+        <Tab.Screen name='Map' component={Map} options={{
+          headerTitleAlign: 'center',
+          headerLeft: (() => {
+            return (
+             <TouchableOpacity>
+                <View style={styles.btnOut}>
+                  <Image source={require('./assets/img/backArrow.png')}></Image>
+                  <Text style={styles.textOut}> Home </Text>
+                </View>
+             </TouchableOpacity>
+            );
+          })
+        }}>
+
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
     </GestureHandlerRootView>
@@ -222,4 +238,13 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
+  btnOut: {
+    flexDirection: 'row',
+    marginLeft: 8,
+  },
+  textOut: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#20C065'
+  }
 });
