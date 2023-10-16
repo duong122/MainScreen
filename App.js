@@ -22,7 +22,7 @@ const ImageLeft = () => {
   );
 };
 
-const RightIcon = ({ navigation }) => {
+const RightIcon = ({}) => {
   return (
     <View style={styles.IconHeaderContainer}>
       <Image source={require('./assets/img/addNewBtn.png')} style={styles.addNewBtn}/>
@@ -34,17 +34,17 @@ const RightIcon = ({ navigation }) => {
 };
 
 const HomeStack = createNativeStackNavigator();
-function HomeStackScreen() {
+function HomeStackScreen({ }) {
   return(
-    <HomeStack.Navigator>
-      <HomeStack.Screen name='Home_1' component={Home_1} options={{
-        headerTitleAlign: 'center',
-        headerTitle: 'Home',
-        headerLeft: () => <ImageLeft/>,
-        headerRight: () => <RightIcon/>
-      }}/>
-      <HomeStack.Screen name='Map' component={Map}/>
-    </HomeStack.Navigator>
+      <HomeStack.Navigator>
+        <HomeStack.Screen name='Home_1' component={Home_1} options={{
+          headerTitleAlign: 'center',
+          headerTitle: 'Home',
+          headerLeft: () => <ImageLeft/>,
+          headerRight: () => <RightIcon/>
+        }}/>
+        <HomeStack.Screen name='Map' component={Map} />
+     </HomeStack.Navigator>
   );
 };
 

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 const Render = ({ item }) => {
   return(
@@ -22,6 +23,12 @@ const Renderhouses = ({ item }) => {
 }
 
 export default function App() {
+  const navigation = useNavigation();
+
+  const handleButtonPress = () => {
+    // Điều hướng đến màn hình khác khi nút được nhấn
+    navigation.navigate('Map'); // Thay 'ScreenName' bằng tên màn hình bạn muốn điều hướng đến
+  };
   return (
     <ScrollView>
     <View style={styles.container} >
@@ -81,13 +88,13 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     marginHorizontal: 15,
-    borderBlockColor: '#3a3a3a',
+    borderBlockColor: '#4A4A4A',
     borderWidth: 1,
     borderRadius: 10,
   },
   ImageRender: {
     borderRadius: 10,
-    width: 129,
+    width: '100%',
     height: 75,
     resizeMode: 'cover',
   },
@@ -186,4 +193,12 @@ const onTheRight = [
     city: 'San francisco',
     uri: require('../assets/img/4housephoto.png')
   },
-]
+];
+
+App.navigationOptions = ({ navigation }) => ({
+  headerRight: () => (
+    <TouchableOpacity onPress={() => navigation.navigate('Map')}>
+      <Text>Go to Another Screen</Text>
+    </TouchableOpacity>
+  ),
+});
