@@ -8,8 +8,9 @@ import Saved from './screens/Saved';
 import Search from './screens/Search';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons"; 
-import { ScreenStackHeaderLeftView, ScreenStackHeaderSearchBarView } from 'react-native-screens';
-import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScreenStackHeaderLeftView, ScreenStackHeaderSearchBarView, SearchBar } from 'react-native-screens';
+import { GestureHandlerRootView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import Map from './screens/Map';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,11 +22,13 @@ const ImageLeft = () => {
   );
 };
 
-const RightIcon = () => {
+const RightIcon = ({ navigation }) => {
   return (
     <View style={styles.IconHeaderContainer}>
       <Image source={require('./assets/img/addNewBtn.png')} style={styles.addNewBtn}/>
-      <Image source={require('./assets/img/MapBtn.png')} style={styles.mapBtn}/>
+      <TouchableOpacity onPress={navigation.navigate('Map')}>
+         <Image source={require('./assets/img/MapBtn.png')} style={styles.mapBtn}/>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -40,6 +43,7 @@ function HomeStackScreen() {
         headerLeft: () => <ImageLeft/>,
         headerRight: () => <RightIcon/>
       }}/>
+      <HomeStack.Screen name='Map' component={Map}/>
     </HomeStack.Navigator>
   );
 };
@@ -68,19 +72,44 @@ function SavedStackStackScreen() {
   );
 };
 
+function LogoTitle() {
+  return (
+    <View style={styles.containerLogoTitle}>
+      <View style={styles.containeIconSearch}>
+        <Ionicons name='md-search' size={24} color={'#4A4A4A'}/>
+      </View>
+
+      <TextInput placeholder='Search' style={styles.textInputSearch}/>
+
+      <View style={styles.containeIconClosed}>
+       <Ionicons name='md-close' size={24} color={'#4A4A4A'}/>
+      </View>
+      
+    </View>
+  );
+}
+
 const SearchStack = createNativeStackNavigator();
 function SearchStackScreen() {
   return(
     <SearchStack.Navigator>
       <SearchStack.Screen name='Search' component={Search} options={{
         headerTitleAlign: 'center',
-        headerTitle: 'Saved',
-        headerShown: false,
-        headerTransparent: false,
-        headerSearchBarOptions
-        
+        headerTitle: () => <LogoTitle/>
       }}/>
     </SearchStack.Navigator>
+  );
+};
+
+const MapStack = createNativeStackNavigator();
+function MapStackScreen() {
+  return(
+    <MapStack.Navigator>
+      <MapStack.Screen name='Map' component={Map} options={{
+        headerTitleAlign: 'center',
+        headerTitle: 'Map'
+      }}/>
+    </MapStack.Navigator>
   );
 };
 
@@ -134,7 +163,7 @@ export default function App() {
           })
         }}></Tab.Screen>
         
-        <Tab.Screen name='Search' component={Search} options={{
+        <Tab.Screen name='Search' component={SearchStackScreen} options={{
           headerShown: false,
           tabBarLabel: 'Search',    
           tabBarIcon: (() => {
@@ -165,5 +194,32 @@ const styles = StyleSheet.create({
   },
   addNewBtn: {
     marginRight: 20,
-  }
+  },
+  containerLogoTitle: {
+    flexDirection: 'row',
+    width: '90%',
+  },
+  textInputSearch: {
+    width: 260,
+    backgroundColor: '#ccc',
+    height: 35,
+  },
+  containeIconSearch: {
+    width: 40, 
+    height: 35,
+    backgroundColor: '#ccc',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    },
+  containeIconClosed: {
+    width: 40, 
+    height: 35,
+    backgroundColor: '#ccc',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
 });

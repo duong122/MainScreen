@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   img: {
     height: 90,
     resizeMode: 'cover',
+    
   },
   textDemo: {
     fontSize: 18,

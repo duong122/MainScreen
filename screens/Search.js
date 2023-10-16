@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 100,
+     marginTop: 10,
     width: '100%'
   },
   subContainer: {
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 12,
     marginLeft: 20,
+  },
+  Text: {
+    backgroundColor: '#fff',
   },
   img: {
     width: 100,
